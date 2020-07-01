@@ -18,6 +18,19 @@ public class StudentService
 	{
 		return dao.getAllStudents();
 	}
+	
+	public boolean findStudent(int rollno)
+	{
+		return dao.findStudent(rollno);
+	}
+	public void updateStudent(Student s)
+	{
+		dao.updateStudent(s);
+	}
+	public boolean removeStudent(int rollno)
+	{
+		return dao.removeStudent(rollno);
+	}
 
 
 }

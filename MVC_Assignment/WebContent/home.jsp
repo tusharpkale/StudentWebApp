@@ -9,8 +9,8 @@
 <body>
 				
 				<a href="addStudent.jsp"><h4>add student</h4></a><br>
-				<a href=""><h4>update student</h4></a><br>
-				<a href=""><h4>delete student</h4></a><br>
+				<a href="updateStudent1.jsp"><h4>update student</h4></a><br>
+				<a href="removeStudent.jsp"><h4>delete student</h4></a><br>
 				<a href="stud"><h4>show all students</h4></a><br>
 </body>
 </html>

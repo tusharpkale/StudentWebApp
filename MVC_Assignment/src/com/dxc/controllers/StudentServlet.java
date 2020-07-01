@@ -39,6 +39,48 @@ public class StudentServlet extends HttpServlet {
 			session.setAttribute("message", message);
 			response.sendRedirect("view.jsp");
 		}
+		else if(action.equals("find"))
+		{
+			int rollno=Integer.parseInt(request.getParameter("rollno"));
+			session.setAttribute("roll_number", rollno);
+			boolean findStatus=service.findStudent(rollno);
+			if(findStatus==true)
+			{
+				response.sendRedirect("updateStudent2.jsp");
+			}
+			else
+			{
+				message="Student not found!";
+				session.setAttribute("message", message);
+				response.sendRedirect("view.jsp");
+			}
+		}
+		else if(action.equals("update_student"))
+		{
+			int rollno=(int)session.getAttribute("roll_number");
+			String name=request.getParameter("name");
+			double percentage=Double.parseDouble(request.getParameter("percentage"));
+			Student s=new Student(rollno, name, percentage);
+			service.updateStudent(s);
+			message="Student updated!";
+			session.setAttribute("message", message);
+			response.sendRedirect("view.jsp");
+		}
+		else if(action.equals("remove"))
+		{
+			int rollno=Integer.parseInt(request.getParameter("rollno"));
+			boolean removeStatus=service.removeStudent(rollno);
+			if(removeStatus==true)
+			{
+				message="Student Removed!";
+			}
+			else
+			{
+				message="Student not present!";
+			}
+			session.setAttribute("message", message);
+			response.sendRedirect("view.jsp");
+		}
 		else
 		{
 			List<Student> list=service.getAllStudents();
